@@ -4,14 +4,12 @@ import { parseBigNumber, BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "fractional_integration";
-var name = "Fractional Integration";
+var id = "fractional_integration-s10";
+var name = "Fractional Integration (SPEED 10)";
 var description =
-  "The functions between a function and its derivative have many ways of being shown, this is one of them. " +
-  "Fractional integration is a way to calculate what is between a function and its integral and is a smooth transition. " +
-  "As such, as a fractional integral approaches 1, it should become the integral.";
-var authors = "Snaeky (SnaekySnacks#1161) - Idea\nGen (Gen#3006) - Coding\nXLII (XLII#0042) - Balancing";
-var version = 5;
+  "modded version to x10 speed";
+var authors = "Snaeky (SnaekySnacks#1161) - Idea\nGen (Gen#3006) - Coding\nXLII (XLII#0042) - Balancing\nmod version made by\nnotera";
+var version = 6;
 var releaseOrder = "5";
 
 requiresGameVersion("1.4.33");
@@ -410,7 +408,7 @@ var updateAvailability = () => {
 };
 
 var tick = (elapsedTime, multiplier) => {
-  let dt = BigNumber.from(elapsedTime * multiplier);
+  let dt = BigNumber.from(elapsedTime * multiplier * 10);
   let bonus = theory.publicationMultiplier;
   adBoost = BigNumber.from(multiplier);
   let vq1 = getQ1(q1.level).pow(getQ1Exp(q1Exp.level));

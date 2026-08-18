@@ -6,12 +6,12 @@ import { parseBigNumber, BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "SequentialLimits"; //must be unique, make sure to change it 
-var name = "Sequential Limits"; //display name
-var description = "You're the first student of the now-retired professor, and now that they've retired, you're given the mantle of chief researcher. Eager to dive into fields where your old professor dove off, you start looking into the concept explored in the seventh lemma - sequential limits - to further your career.\n\nThis theory explores the concept of approximations using a rearrangement of Stirling's Formula to approximate Euler's number.\nThe formula, named after James Stirling and first stated by Abraham De Moivre, states that ln(n!) can be approximated by the infinite sum ln(1) + ln(2) .... + ln(n).\nBe careful - the closer your approximation of Euler's number is, the less your numerator grows!\nA close balancing game, fun for the whole family (or at least, the ones who play Exponential Idle). \n\nSpecial thanks to:\n\nGilles-Philippe, for development of the custom theory SDK, implementing features I requested, providing countless script examples, and help with my numerous questions and balancing.\n\nXelaroc/AlexCord, for answering my neverending questions, debugging and helping me understand how to balance a theory, and going above and beyond to teach me how custom theories work.\n\nThe Exponential Idle beta testing team\n- The Exponential Idle translation team, who's work I added to, and without which this game wouldn't have the reach it does.\n\nEnjoy!"; //theory description. does not support LaTeX
-var authors = "ellipsis"; //display author in the "author" field
-var version = 8; //version id, make sure to change it on update
-var releaseOrder = "2";
+var id = "SequentialLimits-s10"; //must be unique, make sure to change it 
+var name = "Sequential Limits (SPEED 10)"; //display name
+var description = "modded version to x10 speed"; //theory description. does not support LaTeX
+var authors = "ellipsis\nmod version made by\nnotera"; //display author in the "author" field
+var version = 9; //version id, make sure to change it on update
+var releaseOrder = "1";
 
 requiresGameVersion("1.4.33");
 
@@ -175,7 +175,7 @@ var updateInverseE_Gamma = () => {
 //DO NOT TOUCH ON PAIN OF DEATH. YES THIS MEANS YOU, FUTURE ME
 var tick = (elapsedTime, multiplier) => {
 
-    let dt = BigNumber.from(elapsedTime * multiplier); //find tick time
+    let dt = BigNumber.from(elapsedTime * multiplier * 10); //find tick time
     
     rho3dot = (getb1(b1.level).pow(BigNumber.ONE + gamma2.level*BigNumber.From(0.02)) * getb2(b2.level).pow(BigNumber.ONE + gamma3.level*BigNumber.From(0.02))); //rho3dot is equal to b1.value * b2.value accounting for exponenents
     currency3.value += rho3dot*dt; //increase currency3.value by rho3dot*dt

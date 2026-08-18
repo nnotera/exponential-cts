@@ -4,11 +4,11 @@ import { parseBigNumber, BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "weierstrass-product-sine";
-var name = "Weierstraß Sine Product";
-var description = "Exploit the inaccuracy of sine's product representation, a result due to Euler which was rigorously proved later by Weierstraß using his famous Factorization Theorem.\n\nIntuitively, the idea behind this formula is to factorize sine using its roots (sine has zeros at each multiple of π), just as one would do for a polynomial.\n\nThe product s_n represents only the n first factors of this infinite product (together with the root at x=0), which means there is some error between s_n(x) and the actual sin(x), depending on n and x. Note that this truncated product s_n approximates sin(x) better for bigger n and smaller x, in particular the approximation becomes bad for a fixed n when x gets large in the sense that the ratio s_n(x)/sin(x) diverges for x -> infty.\n\nHere, the derivative of q with respect to time is set to s_n(χ)/sin(χ) i.e. the ratio from before evaluated at χ (chi), which itself is a value depending on n. Note that increasing n both increases χ and the accuracy of the approximation s_n.";
-var authors = "xelaroc (AlexCord#6768)";
-var version = 5;
+var id = "weierstrass-product-sine-s10";
+var name = "Weierstraß Sine Product (SPEED 10)";
+var description = "modded version to 10x speed";
+var authors = "xelaroc (AlexCord#6768) \n mod version made by \n notera";
+var version = 6;
 var releaseOrder = "1";
 
 requiresGameVersion("1.4.33");
@@ -138,7 +138,7 @@ var sineRatioK = (n, x, K=5) => {
 }
 
 var tick = (elapsedTime, multiplier) => {
-    let dt = BigNumber.from(elapsedTime*multiplier);
+    let dt = BigNumber.from(elapsedTime * multiplier * 10);
     let bonus = theory.publicationMultiplier;
     let vq1 = getQ1(q1.level).pow(getQ1Exp(q1Exp.level));
     let vq2 = getQ2(q2.level);

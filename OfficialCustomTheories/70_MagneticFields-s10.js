@@ -9,18 +9,14 @@ import { FontAttributes } from "../api/ui/properties/FontAttributes";
 import { Thickness } from "../api/ui/properties/Thickness";
 import { LayoutOptions } from "../api/ui/properties/LayoutOptions";
 
-var id = "magnetic_fields";
-var name = "Magnetic Fields";
+var id = "magnetic_fields-s10";
+var name = "Magnetic Fields (SPEED 10)";
 var description = 
-"A Custom Theory to explore the basic concepts of Magnetic Fields.\n"+
-"Discover the equations that describe the movement of a charged particle inside a solenoid of infinite length.\n"+
-"Watch how rho grows as the particle moves away from its starting position and the magnetic field becomes stronger.\n"+
-"Reset the particle's position to update its velocity to increase your long-term benefits.\n"+
-"Have fun!\n"
+"modded version to x10 speed"
 var authors = "Mathis S.\n" +
 "Thanks to the amazing Exponential Idle community for their support and feedback on this theory!\n"+
-"Special thanks to prop for helping me with parts of the code.";
-var version = 1;
+"Special thanks to prop for helping me with parts of the code.\nmod version made by\nnotera";
+var version = 2;
 var releaseOrder = "8";
 
 requiresGameVersion("1.4.38");
@@ -531,7 +527,7 @@ var tick = (elapsedTime, multiplier) => {
     if (vx == BigNumber.ZERO) resetSimulation();
     if (c1.level == 0) return;
 
-    let dt = BigNumber.from(elapsedTime * multiplier);
+    let dt = BigNumber.from(elapsedTime * multiplier * 10);
     pubTime += elapsedTime;
     resetTime += elapsedTime;
 

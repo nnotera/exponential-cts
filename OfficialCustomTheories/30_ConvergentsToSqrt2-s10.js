@@ -6,11 +6,11 @@ import { Utils } from "../api/Utils";
 
 requiresGameVersion("1.4.33");
 
-var id = "convergents_to_sqrt(2)"
-var name = "Convergents to √2";
-var description = "Use the convergents to √2 to increase ρ. The first few convergents to √2 are as follows: 1, 3/2, 7/5, 17/12. N_n is the numerator of the nth convergent to √2 and D_n is the nth denominator, with 0th convergent being 1/1. In the limit, these converge to √2. The convergents oscillate above and below √2. The rate of change of q is based on the precision of the approximation.";
-var authors = "Solarion#4131";
-var version = 12;
+var id = "convergents_to_sqrt(2)-s10"
+var name = "Convergents to √2 (SPEED 10)";
+var description = "modded version to x10 speed";
+var authors = "Solarion#4131\nmod version made by\nnotera";
+var version = 13;
 var releaseOrder = "4";
 
 var tauMultiplier = 4;
@@ -115,7 +115,7 @@ var tick = (elapsedTime, multiplier) => {
     if (q1.level == 0)
         return;
 
-    let dt = BigNumber.from(elapsedTime * multiplier);
+    let dt = BigNumber.from(elapsedTime * multiplier * 10);
     let bonus = theory.publicationMultiplier;
     let vq1 = getQ1(q1.level).pow(getQ1Exp(q1Exp.level));
     let vq2 = getQ2(q2.level);

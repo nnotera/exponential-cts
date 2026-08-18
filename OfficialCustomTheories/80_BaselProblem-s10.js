@@ -15,17 +15,12 @@ import {game} from "./api/Game";
 
 requiresGameVersion("1.4.33");
 
-var id = "basel_problem";
-var name = "Basel Problem";
+var id = "basel_problem-s10";
+var name = "Basel Problem (SPEED 10)";
 var description =
-    "The Basel problem is a legendary puzzle in mathematics, first proposed in the 17th century and famously solved by Leonhard Euler. " +
-    "It asks a deceptively simple question: what is the sum of the inverse squares of all positive integers? " +
-    "This infinite series, 1/1 + 1/4 + 1/9 + 1/16 + ..., converges to a finite value, but what? " +
-    "\n\n" + "In the Basel Problem theory, stand in Euler's shoes as you navigate the world of inverse squares. " +
-    "Everything in this theory revolves around them - variables based on partial sums, variable power scaling, and even the publication multiplier. " +
-    "Can you figure out the solution to this ancient problem?";
-var authors = "Python's Koala\n\nThanks to Mathis S. for developing the simulation for theory balancing.";
-var version = 2;
+    "modded version to x10 speed";
+var authors = "Python's Koala\n\nThanks to Mathis S. for developing the simulation for theory balancing.\nmod version made by\nnotera";
+var version = 3;
 var releaseOrder = "9";
 
 var tauMultiplier = 0.4;
@@ -572,7 +567,7 @@ var getEndPopup = ui.createPopup({
 
 
 var tick = (elapsedTime, multiplier) => {
-    let dt = BigNumber.from(elapsedTime * multiplier);
+    let dt = BigNumber.from(elapsedTime * multiplier * 10);
     let bonus = BigNumber.from(theory.publicationMultiplier);
 
     if(game.isCalculatingOfflineProgress) {
