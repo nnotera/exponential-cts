@@ -5,7 +5,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "weierstrass-product-sine-s10";
-var name = "Weierstraß Sine Product (SPEED 10)";
+var name = "00 Weierstraß Sine Product (SPEED 10)";
 var description = "modded version to 10x speed";
 var authors = "xelaroc (AlexCord#6768) \n mod version made by \n notera";
 var version = 6;

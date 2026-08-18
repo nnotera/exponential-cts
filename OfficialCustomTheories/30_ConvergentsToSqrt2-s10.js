@@ -7,7 +7,7 @@ import { Utils } from "../api/Utils";
 requiresGameVersion("1.4.33");
 
 var id = "convergents_to_sqrt(2)-s10"
-var name = "Convergents to √2 (SPEED 10)";
+var name = "30 Convergents to √2 (SPEED 10)";
 var description = "modded version to x10 speed";
 var authors = "Solarion#4131\nmod version made by\nnotera";
 var version = 13;

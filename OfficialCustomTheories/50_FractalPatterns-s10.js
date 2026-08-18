@@ -5,7 +5,7 @@ import { theory, QuaternaryEntry } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "fractal_patterns-s10";
-var name = "Fractal Patterns (SPEED 10)";
+var name = "50 Fractal Patterns (SPEED 10)";
 var description =
   "modded version to 10x speed";
 var authors = "xlii\nmod version made by\nnotera";

@@ -5,7 +5,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "weierstrass-product-sine-s3600";
-var name = "Weierstraß Sine Product (SPEED 3600)";
+var name = "01 Weierstraß Sine Product (SPEED 3600)";
 var description = "modded version to 3600x speed";
 var authors = "xelaroc (AlexCord#6768) \n mod version made by \n notera";
 var version = 6;

@@ -5,7 +5,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "fractional_integration-s10";
-var name = "Fractional Integration (SPEED 10)";
+var name = "40 Fractional Integration (SPEED 10)";
 var description =
   "modded version to x10 speed";
 var authors = "Snaeky (SnaekySnacks#1161) - Idea\nGen (Gen#3006) - Coding\nXLII (XLII#0042) - Balancing\nmod version made by\nnotera";

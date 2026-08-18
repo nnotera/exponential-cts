@@ -7,7 +7,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "SequentialLimits-s3600"; //must be unique, make sure to change it 
-var name = "Sequential Limits (SPEED 3600)"; //display name
+var name = "11 Sequential Limits (SPEED 3600)"; //display name
 var description = "modded version to x3600 speed"; //theory description. does not support LaTeX
 var authors = "ellipsis\nmod version made by\nnotera"; //display author in the "author" field
 var version = 9; //version id, make sure to change it on update

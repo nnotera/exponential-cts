@@ -16,7 +16,7 @@ import {game} from "./api/Game";
 requiresGameVersion("1.4.33");
 
 var id = "eulers_formula-s10";
-var name = "Euler's Formula (SPEED 10)";
+var name = "20 Euler's Formula (SPEED 10)";
 var description = "modded version to x10 speed"
 var authors = "Snaeky (SnaekySnacks#1161) - Structuring\nXLII (XLII#0042) - Balancing\npeanut (peanut#6368) - Developer\nmod version made by\nnotera";
 var version = 7;

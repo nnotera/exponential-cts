@@ -10,7 +10,7 @@ import { Thickness } from "../api/ui/properties/Thickness";
 import { LayoutOptions } from "../api/ui/properties/LayoutOptions";
 
 var id = "magnetic_fields-s10";
-var name = "Magnetic Fields (SPEED 10)";
+var name = "70 Magnetic Fields (SPEED 10)";
 var description = 
 "modded version to x10 speed"
 var authors = "Mathis S.\n" +

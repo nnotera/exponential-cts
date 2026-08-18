@@ -5,7 +5,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "fractional_integration-s3600";
-var name = "Fractional Integration (SPEED 3600)";
+var name = "41 Fractional Integration (SPEED 3600)";
 var description =
   "modded version to x3600 speed";
 var authors = "Snaeky (SnaekySnacks#1161) - Idea\nGen (Gen#3006) - Coding\nXLII (XLII#0042) - Balancing\nmod version made by\nnotera";

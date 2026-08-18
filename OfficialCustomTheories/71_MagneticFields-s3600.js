@@ -10,7 +10,7 @@ import { Thickness } from "../api/ui/properties/Thickness";
 import { LayoutOptions } from "../api/ui/properties/LayoutOptions";
 
 var id = "magnetic_fields-s3600";
-var name = "Magnetic Fields (SPEED 3600)";
+var name = "71 Magnetic Fields (SPEED 3600)";
 var description = 
 "modded version to x3600 speed"
 var authors = "Mathis S.\n" +

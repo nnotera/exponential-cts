@@ -16,7 +16,7 @@ import {game} from "./api/Game";
 requiresGameVersion("1.4.33");
 
 var id = "basel_problem-s3600";
-var name = "Basel Problem (SPEED 3600)";
+var name = "81 Basel Problem (SPEED 3600)";
 var description =
     "modded version to x3600 speed";
 var authors = "Python's Koala\n\nThanks to Mathis S. for developing the simulation for theory balancing.\nmod version made by\nnotera";
