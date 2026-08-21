@@ -306,11 +306,11 @@ class BigComplexNumber {
     }
 }
 
-var id = "roots_of_polynomial";
-var name = "Roots of Polynomial";
-var description = "A basic theory.";
-var authors = "BasicallyIAmFox";
-var version = 7;
+var id = "roots_of_polynomial_speedup";
+var name = "Roots of Polynomial (speedup)";
+var description = "x3600 speedup\nA basic theory.";
+var authors = "BasicallyIAmFox\n(mod) notera";
+var version = 8;
 
 var currency;
 var currencyDiscriminant;
@@ -848,7 +848,7 @@ var tick = (elapsedTime, multiplier) => {
         recomputeRoots = false;
     }
 
-    let dt = BigNumber.from(elapsedTime * multiplier);
+    let dt = BigNumber.from(elapsedTime * multiplier * 3600);
     let bonus = theory.publicationMultiplier;
     rhodot = calculateRhodot(polynomialDegree, i => computedRoots[sortedRoots[i]]) * bonus;
     lambdadot = calculateLambdadot();
