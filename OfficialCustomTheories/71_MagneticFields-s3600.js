@@ -557,7 +557,7 @@ var tick = (elapsedTime, multiplier) => {
     let vterm = velocityTerm.level > 0 ? vtot.pow(getVexp()) : BigNumber.ONE;
 
     rhodot = BigNumber.from(multiplier) * bonus * C * vc1 * vc2 * xterm * omegaterm * vterm;
-    currency.value += rhodot * BigNumber.from(elapsedTime * multiplier * 3600);
+    currency.value += rhodot * BigNumber.from(elapsedTime * 3600);
 
     theory.invalidateQuaternaryValues();
 }
