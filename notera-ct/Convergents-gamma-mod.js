@@ -232,7 +232,7 @@ var tick = (elapsedTime, multiplier) => {
     if (nBaseMs.level === 2) nBase = 1.12;
 
     N = calculateN(0, 1, logIndex, epsilon);
-    let dot_a = BigNumber.from(nBase).pow(N);
+    let dot_a = c1.level > 0 ? BigNumber.from(nBase).pow(N) : BigNumber.ZERO;
     a += dt * dot_a
     //calculateErrorMarginLog(0, 1, logIndex, N);
     currency.value += dt * bonus * vc1 * vc2 * a;
