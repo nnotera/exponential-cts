@@ -46,11 +46,12 @@ var logAttractorPoints = [ // re, im
     [-0.103534, 0.794542]
 ];
 var N;
-var a;
+var dot_a, a;
 
 var init = () => {
     currency = theory.createCurrency();
     if (a == undefined) a = BigNumber.ZERO
+    if (dot_a == undefined) dot_a = BigNumber.ZERO
     ///////////////////
     // Regular Upgrades
 
@@ -216,7 +217,7 @@ var calculateErrorMarginLog = (reX, imX, index, n) => {
 }
 
 var tick = (elapsedTime, multiplier) => {
-    let dt = BigNumber.from(elapsedTime * multiplier * 3600);
+    let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
 
     let vc1 = getC1(c1.level) ** (1 + 0.02 * c1ExpMs.level);
@@ -232,7 +233,7 @@ var tick = (elapsedTime, multiplier) => {
     if (nBaseMs.level === 2) nBase = 1.12;
 
     N = calculateN(0, 1, logIndex, epsilon);
-    let dot_a = c1.level > 0 ? BigNumber.from(nBase).pow(N) : BigNumber.ZERO;
+    dot_a = c1.level > 0 ? BigNumber.from(nBase).pow(N) : BigNumber.ZERO;
     a += dt * dot_a
     //calculateErrorMarginLog(0, 1, logIndex, N);
     currency.value += dt * bonus * vc1 * vc2 * a;
@@ -253,7 +254,7 @@ var getPrimaryEquation = () => {
     if (nBaseMs.level === 0) result += `1.1`;
     if (nBaseMs.level === 1) result += `1.11`;
     if (nBaseMs.level === 2) result += `1.12`;
-    result += `^N\\\\ ${c1.level} \\end{matrix}`
+    result += `^N = ${dot_a}\\\\ ${c1.level} \\end{matrix}`
     return result;
 };
 
