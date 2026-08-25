@@ -41,7 +41,7 @@ var aCost = [
     new ExponentialCost(1e110, Math.log2(900))
 ];
 var n;
-var e_k = [null, null, null, null, null]
+var e_k = [BigNumber.ZERO, BigNumber.ZERO, BigNumber.ZERO, BigNumber.ZERO, BigNumber.ZERO]
 
 var aiPerma;
 var biPerma;
