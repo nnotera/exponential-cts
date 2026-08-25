@@ -4,9 +4,9 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Vector3, Utils } from "./api/Utils";
 
-var id = "iterated_logarithm_convergence_spedup";
+var id = "iterated_logarithm_convergence_mod";
 var getName = (_) => {
-    return `Iterated Logarithm Convergence (speedup)`;
+    return `Iterated Logarithm Convergence (mod)`;
 };
 var getDescription = (_) => {
     return `x3600 speedup\nYou're bored and you decide to take a logarithm of a complex number.
@@ -224,6 +224,7 @@ var tick = (elapsedTime, multiplier) => {
     let ve2 = getE2(e2.level);
     let ve3 = epsilonTermMs.level > 0 ? getE3(e3.level) : BigNumber.ONE;
     let ve4 = epsilonTermMs.level > 1 ? getE3(e4.level) : BigNumber.ONE;
+    let a = BigNumber.ZERO
 
     let epsilon = ve1 * ve2 * ve3 * ve4;
     let nBase = 1.1;
@@ -231,8 +232,10 @@ var tick = (elapsedTime, multiplier) => {
     if (nBaseMs.level === 2) nBase = 1.12;
 
     N = calculateN(0, 1, logIndex, epsilon);
+    let dot_a = BigNumber.from(nBase).pow(N);
+    a += dt * dot_a
     //calculateErrorMarginLog(0, 1, logIndex, N);
-    currency.value += dt * bonus * vc1 * vc2 * BigNumber.from(nBase).pow(N);
+    currency.value += dt * bonus * vc1 * vc2 * a;
 
     theory.invalidateTertiaryEquation();
 };
@@ -245,11 +248,11 @@ var getPrimaryEquation = () => {
     if (c1ExpMs.level === 1) result += `^{1.02}`;
     if (c1ExpMs.level === 2) result += `^{1.04}`;
     if (c1ExpMs.level === 3) result += `^{1.06}`;
-    result += ` c_2 a^N \\\\ a = `;
+    result += ` c_2 a \\\\ \\dot{a} = `;
     if (nBaseMs.level === 0) result += `1.1`;
     if (nBaseMs.level === 1) result += `1.11`;
     if (nBaseMs.level === 2) result += `1.12`;
-    result += `\\end{matrix}`
+    result += `^N\\end{matrix}`
     return result;
 };
 
