@@ -40,7 +40,7 @@ var aCost = [
     new ExponentialCost(1e25, Math.log2(800)),
     new ExponentialCost(1e110, Math.log2(900))
 ];
-var e_k, dot_e_k, n;
+var e_k, n;
 
 var aiPerma;
 var biPerma;
@@ -86,7 +86,6 @@ var init = () => {
         b.push(bUpgrade);
 
         e_k.push(BigNumber.ZERO);
-        dot_e_k.push(null);
     }
 
     ///////////////////
