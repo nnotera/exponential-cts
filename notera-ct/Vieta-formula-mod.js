@@ -66,7 +66,7 @@ var init = () => {
         tdot.getDescription = (_) => Utils.getMath(`\\dot{t} = ${getTdot(tdot.level)}`);
         tdot.getInfo = (amount) => Utils.getMathTo(`\\dot{t} = ${getTdot(tdot.level)}`, `\\dot{t} = ${getTdot(tdot.level + amount)}`);
         tdot.boughtOrRefunded = (_) => updateAvailability();
-        tdot.maxLevel = 4*5;
+        tdot.maxLevel = 4;
     }
 
     a = [];
