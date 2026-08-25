@@ -46,11 +46,11 @@ var logAttractorPoints = [ // re, im
     [-0.103534, 0.794542]
 ];
 var N;
-var a=0;
+var a;
 
 var init = () => {
     currency = theory.createCurrency();
-
+    if (a == undefined) a = BigNumber.ZERO
     ///////////////////
     // Regular Upgrades
 
