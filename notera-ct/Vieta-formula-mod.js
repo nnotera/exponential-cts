@@ -40,7 +40,7 @@ var aCost = [
     new ExponentialCost(1e25, Math.log2(800)),
     new ExponentialCost(1e110, Math.log2(900))
 ];
-var e_k, n;
+var e_k, dot_e_k, n;
 
 var aiPerma;
 var biPerma;
@@ -66,7 +66,7 @@ var init = () => {
         tdot.getDescription = (_) => Utils.getMath(`\\dot{t} = ${getTdot(tdot.level)}`);
         tdot.getInfo = (amount) => Utils.getMathTo(`\\dot{t} = ${getTdot(tdot.level)}`, `\\dot{t} = ${getTdot(tdot.level + amount)}`);
         tdot.boughtOrRefunded = (_) => updateAvailability();
-        tdot.maxLevel = 4;
+        tdot.maxLevel = 4*5;
     }
 
     a = [];
@@ -85,7 +85,8 @@ var init = () => {
         bUpgrade.getInfo = (amount) => Utils.getMathTo(`b_${i} = ${getB(bUpgrade.level)}`, `b_${i} = ${getB(bUpgrade.level + amount)}`);
         b.push(bUpgrade);
 
-        e_k.push(null);
+        e_k.push(BigNumber.ZERO);
+        dot_e_k.push(null);
     }
 
     ///////////////////
@@ -178,7 +179,7 @@ var updateAvailability = () => {
 };
 
 var tick = (elapsedTime, multiplier) => {
-    let dt = BigNumber.from(elapsedTime * multiplier * 3600);
+    let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
 
     let aiExp = 1 + 0.03 * aiExpMs.level;
@@ -189,32 +190,32 @@ var tick = (elapsedTime, multiplier) => {
     let a4 = a[4].isAvailable ? getA(a[4].level).pow(aiExp) : BigNumber.ZERO, b4 = b[4].isAvailable ? getB(b[4].level) : BigNumber.ZERO;
     let r0 = a0 * b0, r1 = a1 * b1, r2 = a2 * b2, r3 = a3 * b3, r4 = a4 * b4;
     if (a[4].isAvailable && a[4].level > 0) {
-        e_k[0] = r0 + r1 + r2 + r3 + r4;
-        e_k[1] = r0 * (r1 + r2 + r3 + r4) + r1 * (r2 + r3 + r4) + r2 * (r3 + r4) + r3 * r4;
-        e_k[2] = r0 * (r1 * (r2 + r3 + r4) + r2 * (r3 + r4) + r3 * r4) + r1 * (r2 * (r3 + r4) + r3 * r4) + r2 * r3 * r4;
-        e_k[3] = r0 * (r1 * (r2 * (r3 + r4) + r3 * r4) + r2 * r3 * r4) + r1 * r2 * r3 * r4;
-        e_k[4] = r0 * r1 * r2 * r3 * r4;
+        e_k[0] += r0 + r1 + r2 + r3 + r4;
+        e_k[1] += r0 * (r1 + r2 + r3 + r4) + r1 * (r2 + r3 + r4) + r2 * (r3 + r4) + r3 * r4;
+        e_k[2] += r0 * (r1 * (r2 + r3 + r4) + r2 * (r3 + r4) + r3 * r4) + r1 * (r2 * (r3 + r4) + r3 * r4) + r2 * r3 * r4;
+        e_k[3] += r0 * (r1 * (r2 * (r3 + r4) + r3 * r4) + r2 * r3 * r4) + r1 * r2 * r3 * r4;
+        e_k[4] += r0 * r1 * r2 * r3 * r4;
         n = 5;
     } else if (a[3].isAvailable && a[3].level > 0) {
-        e_k[0] = r0 + r1 + r2 + r3;
-        e_k[1] = r0 * (r1 + r2 + r3) + r1 * (r2 + r3) + r2 * r3;
-        e_k[2] = r0 * (r1 * (r2 + r3) + r2 * r3) + r1 * r2 * r3;
-        e_k[3] = r0 * r1 * r2 * r3;
+        e_k[0] += r0 + r1 + r2 + r3;
+        e_k[1] += r0 * (r1 + r2 + r3) + r1 * (r2 + r3) + r2 * r3;
+        e_k[2] += r0 * (r1 * (r2 + r3) + r2 * r3) + r1 * r2 * r3;
+        e_k[3] += r0 * r1 * r2 * r3;
         e_k[4] = BigNumber.ZERO;
         n = 4;
     } else if (a[2].level > 0) {
-        e_k[0] = r0 + r1 + r2;
-        e_k[1] = r0 * (r1 + r2) + r1 * r2;
-        e_k[2] = r0 * r1 * r2;
+        e_k[0] += r0 + r1 + r2;
+        e_k[1] += r0 * (r1 + r2) + r1 * r2;
+        e_k[2] += r0 * r1 * r2;
         e_k[3] = e_k[4] = BigNumber.ZERO;
         n = 3;
     } else if (a[1].level > 0) {
-        e_k[0] = r0 + r1;
-        e_k[1] = r0 * r1;
+        e_k[0] += r0 + r1;
+        e_k[1] += r0 * r1;
         e_k[2] = e_k[3] = e_k[4] = BigNumber.ZERO;
         n = 2;
     } else if (a[0].level > 0) {
-        e_k[0] = r0;
+        e_k[0] += r0;
         e_k[1] = e_k[2] = e_k[3] = e_k[4] = BigNumber.ZERO;
         n = 1;
     } else {
@@ -261,7 +262,7 @@ var getPrimaryEquation = () => {
     let result = `\\begin{array}{cl}`;
     result += `\\dot{${currency.symbol}} = t \\prod_{k = 1}^{n} {{\\max(1, e_k)}^{\\frac{2}{1 + k}}}`;
     result += `\\\\ \\\\`; // Intentional double newline
-    result += `e_k = \\sum_{\\begin{array}{cl} I \\subseteq \\{1, \\cdots, n \\} \\\\ |I| = k \\end{array}} \\prod_{i \\in I} {r_{i}}`;
+    result += `\\dot{e_k} = \\sum_{\\begin{array}{cl} I \\subseteq \\{1, \\cdots, n \\} \\\\ |I| = k \\end{array}} \\prod_{i \\in I} {r_{i}}`;
     result += `\\end{array}`;
     return result;
 };
