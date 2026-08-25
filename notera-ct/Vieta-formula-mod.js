@@ -4,8 +4,8 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "vietas_formula_speedup";
-var name = "Vieta's Formula (speedup)";
+var id = "vietas_formula_mod";
+var name = "Vieta's Formula (mod)";
 var description = "x3600 speedup\nA custom theory based on Vieta's Formula.";
 var authors = "BasicallyIAmFox\n(mod) notera";
 var version = 3;
