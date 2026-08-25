@@ -239,6 +239,7 @@ var tick = (elapsedTime, multiplier) => {
     currency.value += dt * bonus * vc1 * vc2 * a;
 
     theory.invalidateTertiaryEquation();
+    theory.invalidatePrimaryEquation();
 };
 
 var postPublish = () => {
