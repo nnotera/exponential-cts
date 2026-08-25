@@ -46,12 +46,10 @@ var logAttractorPoints = [ // re, im
     [-0.103534, 0.794542]
 ];
 var N;
-var dot_a, a;
+var dot_a, a= BigNumber.ZERO;
 
 var init = () => {
     currency = theory.createCurrency();
-    if (a == undefined) a = BigNumber.ZERO
-    if (dot_a == undefined) dot_a = BigNumber.ZERO
     ///////////////////
     // Regular Upgrades
 
@@ -243,6 +241,7 @@ var tick = (elapsedTime, multiplier) => {
 };
 
 var postPublish = () => {
+    a = BigNumber.ZERO
 };
 
 var getPrimaryEquation = () => {

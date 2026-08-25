@@ -40,7 +40,8 @@ var aCost = [
     new ExponentialCost(1e25, Math.log2(800)),
     new ExponentialCost(1e110, Math.log2(900))
 ];
-var e_k, n;
+var n;
+var e_k = [null, null, null, null, null]
 
 var aiPerma;
 var biPerma;
@@ -55,7 +56,6 @@ var init = () => {
 
     t = BigNumber.ZERO;
 
-    e_k = [];
     n = 0;
 
     ///////////////////
@@ -84,8 +84,6 @@ var init = () => {
         bUpgrade.getDescription = (_) => Utils.getMath(`b_${i} = ${getBDesc(bUpgrade.level)}`);
         bUpgrade.getInfo = (amount) => Utils.getMathTo(`b_${i} = ${getB(bUpgrade.level)}`, `b_${i} = ${getB(bUpgrade.level + amount)}`);
         b.push(bUpgrade);
-
-        e_k.push(BigNumber.ZERO);
     }
 
     ///////////////////
@@ -251,6 +249,7 @@ var setInternalState = (stateStr) => {
 
 var postPublish = () => {
     t = BigNumber.ZERO;
+    e_k = [null, null, null, null, null]
     updateAvailability();
 };
 
