@@ -46,6 +46,7 @@ var logAttractorPoints = [ // re, im
     [-0.103534, 0.794542]
 ];
 var N;
+var a;
 
 var init = () => {
     currency = theory.createCurrency();
@@ -224,7 +225,6 @@ var tick = (elapsedTime, multiplier) => {
     let ve2 = getE2(e2.level);
     let ve3 = epsilonTermMs.level > 0 ? getE3(e3.level) : BigNumber.ONE;
     let ve4 = epsilonTermMs.level > 1 ? getE3(e4.level) : BigNumber.ONE;
-    let a = BigNumber.ZERO
 
     let epsilon = ve1 * ve2 * ve3 * ve4;
     let nBase = 1.1;
@@ -277,7 +277,7 @@ b = ${base} ,\\ x_0 = b \\ln{x_0} \\equiv ${point}
 
 var getTertiaryEquation = () => {
     return `\\begin{matrix}
-${theory.latexSymbol} = \\max \\rho^{2} ,& N = ${N}
+${theory.latexSymbol} = \\max \\rho^{2} ,& N = ${N},& a= ${a}
 \\end{matrix}`;
 };
 
