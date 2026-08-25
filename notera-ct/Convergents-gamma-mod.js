@@ -18,7 +18,7 @@ but the value converges to a fixed point.
 What is the nature of such behaviour? You have decided to explore it further.`;
 };
 var authors = "BasicallyIAmFox\n(mod) notera";
-var version = 2;
+var version = 3;
 
 var currency;
 var c1, c2;
@@ -241,6 +241,7 @@ var tick = (elapsedTime, multiplier) => {
 };
 
 var postPublish = () => {
+    a = BigNumber.ZERO
 };
 
 var getPrimaryEquation = () => {
