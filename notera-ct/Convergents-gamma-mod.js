@@ -46,7 +46,7 @@ var logAttractorPoints = [ // re, im
     [-0.103534, 0.794542]
 ];
 var N;
-var a;
+var a=0;
 
 var init = () => {
     currency = theory.createCurrency();
