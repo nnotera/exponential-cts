@@ -254,7 +254,7 @@ var getPrimaryEquation = () => {
     if (nBaseMs.level === 0) result += `1.1`;
     if (nBaseMs.level === 1) result += `1.11`;
     if (nBaseMs.level === 2) result += `1.12`;
-    result += `^N = ${dot_a}\\\\ ${c1.level} \\end{matrix}`
+    result += `^N = ${dot_a}\\end{matrix}`
     return result;
 };
 
