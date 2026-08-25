@@ -243,6 +243,7 @@ var tick = (elapsedTime, multiplier) => {
 
 var postPublish = () => {
     a = BigNumber.ZERO
+    dot_a = BigNumber.ZERO
 };
 
 var getPrimaryEquation = () => {
